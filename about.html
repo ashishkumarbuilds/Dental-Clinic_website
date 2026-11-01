@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{const t=localStorage.getItem('dentaCareTheme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>About Us | DentaCare</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="logo" href="index.html"><span class="logo-icon">🦷</span><span>DentaCare</span></a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a class="active" href="about.html">Specialists</a>
+      <a href="appointment.html">Book Visit</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn secondary btn-sm" href="login.html">🔒 Portal Login</a>
+      <a class="btn btn-sm" href="appointment.html">+ Book Visit</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </nav>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="eyebrow">About DentaCare</div>
+      <h1>Modern Dentistry, Organized Simply.</h1>
+      <p>A professional academic prototype designed to unify the end-to-end dental patient journey.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <div class="card">
+        <h2>Our Mission</h2>
+        <p class="muted">DentaCare eliminates fragmented records in outpatient dental clinics by bringing demographics, scheduled visits, procedural timelines, and recalls into a single connected interface.</p>
+        <br>
+        <p class="muted">The layout is streamlined so receptionists, dental nurses, and specialist surgeons can access vital clinical notes with minimal friction.</p>
+      </div>
+      <div class="card">
+        <h2>Core Clinical Values</h2>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px">
+          <p>✓ <strong>Patient-Centric Profiles:</strong> Medical history, allergies, and contact data preserved centrally.</p>
+          <p>✓ <strong>Procedure Transparency:</strong> Multi-visit endodontics and orthodontics tracked in stages.</p>
+          <p>✓ <strong>Frictionless Scheduling:</strong> Real-time slot management preventing chair double-booking.</p>
+          <p>✓ <strong>Systematic Follow-Ups:</strong> Automated recall records reducing post-op complication rates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Our Clinical Faculty</div>
+        <h2>Meet Our Dental Specialists</h2>
+        <p class="muted">Board-certified specialists bringing compassionate care, microscopic precision, and digital dentistry to every operatory chair.</p>
+      </div>
+
+      <div class="grid">
+        <!-- 1. Dr. Rohan Kapoor -->
+        <div class="specialist-card">
+          <div class="specialist-img-wrap">
+            <img src="images/dr_rohan_kapoor.jpg" alt="Dr. Rohan Kapoor - Chief Endodontist" loading="lazy">
+            <div class="specialist-badge-pill">
+              <span class="pulse-dot" style="background:#10b981;width:8px;height:8px"></span>
+              <span>Available · Chair 2</span>
+            </div>
+          </div>
+          <div class="specialist-body">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+              <div>
+                <h3 style="margin-bottom:2px;font-size:1.25rem">Dr. Rohan Kapoor</h3>
+                <p style="color:var(--primary);font-weight:700;font-size:0.86rem">Chief Endodontist & Microsurgeon</p>
+              </div>
+              <span class="badge warning" style="font-size:0.75rem">12+ Yrs Exp</span>
+            </div>
+            
+            <p class="muted" style="font-size:0.86rem;margin-bottom:12px">
+              BDS, MDS - Endodontics & Conservative Dentistry (PGI)<br>
+              Fellow of International College of Dentists (FICD)
+            </p>
+
+            <p style="font-size:0.88rem;color:#334155;line-height:1.45;margin-bottom:14px">
+              Specializes in painless single-visit microscopic root canal therapy, endodontic retreatment, and emergency pulp regeneration with zero discomfort.
+            </p>
+
+            <div style="margin-bottom:16px">
+              <span class="specialist-tag">🔬 Microscopic RCT</span>
+              <span class="specialist-tag">🛡️ Pulp Preservation</span>
+              <span class="specialist-tag">🚨 Dental Trauma</span>
+              <span class="specialist-tag">⚡ Pain-Free Laser</span>
+            </div>
+
+            <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <small class="muted" style="display:block;font-size:0.75rem">OPERATORY SUITE</small>
+                <strong style="font-size:0.86rem">Root Canal Suite (Chair 2)</strong>
+              </div>
+              <a class="btn btn-sm" href="appointment.html">Book Visit →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Dr. Ananya Mehta -->
+        <div class="specialist-card">
+          <div class="specialist-img-wrap">
+            <img src="images/dr_ananya_mehta.jpg" alt="Dr. Ananya Mehta - Cosmetic Dentist & Prosthodontist" loading="lazy">
+            <div class="specialist-badge-pill">
+              <span class="pulse-dot" style="background:#10b981;width:8px;height:8px"></span>
+              <span>Available · Chair 1</span>
+            </div>
+          </div>
+          <div class="specialist-body">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+              <div>
+                <h3 style="margin-bottom:2px;font-size:1.25rem">Dr. Ananya Mehta</h3>
+                <p style="color:var(--primary);font-weight:700;font-size:0.86rem">Senior Aesthetic & Restorative Surgeon</p>
+              </div>
+              <span class="badge success" style="font-size:0.75rem">10+ Yrs Exp</span>
+            </div>
+
+            <p class="muted" style="font-size:0.86rem;margin-bottom:12px">
+              BDS, MDS - Prosthodontics & Implantology (AIIMS)<br>
+              Member of American Academy of Cosmetic Dentistry (AACD)
+            </p>
+
+            <p style="font-size:0.88rem;color:#334155;line-height:1.45;margin-bottom:14px">
+              Dedicated to smile transformation using ultra-thin porcelain veneers, CAD/CAM ceramic crowns, full mouth rehabilitation, and advanced teeth whitening.
+            </p>
+
+            <div style="margin-bottom:16px">
+              <span class="specialist-tag">✨ Digital Smile Design</span>
+              <span class="specialist-tag">😁 Porcelain Veneers</span>
+              <span class="specialist-tag">🧩 Dental Implants</span>
+              <span class="specialist-tag">🌟 Teeth Whitening</span>
+            </div>
+
+            <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <small class="muted" style="display:block;font-size:0.75rem">OPERATORY SUITE</small>
+                <strong style="font-size:0.86rem">Aesthetic Suite (Chair 1)</strong>
+              </div>
+              <a class="btn btn-sm" href="appointment.html">Book Visit →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Dr. Simran Gill -->
+        <div class="specialist-card">
+          <div class="specialist-img-wrap">
+            <img src="images/dr_simran_gill.jpg" alt="Dr. Simran Gill - Orthodontist" loading="lazy">
+            <div class="specialist-badge-pill">
+              <span class="pulse-dot" style="background:#10b981;width:8px;height:8px"></span>
+              <span>Available · Chair 3</span>
+            </div>
+          </div>
+          <div class="specialist-body">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+              <div>
+                <h3 style="margin-bottom:2px;font-size:1.25rem">Dr. Simran Gill</h3>
+                <p style="color:var(--primary);font-weight:700;font-size:0.86rem">Lead Orthodontist & Dentofacial Orthopedist</p>
+              </div>
+              <span class="badge info" style="font-size:0.75rem">8+ Yrs Exp</span>
+            </div>
+
+            <p class="muted" style="font-size:0.86rem;margin-bottom:12px">
+              BDS, MDS - Orthodontics & Dentofacial Orthopedics (Manipal)<br>
+              Certified Diamond Invisalign & Clear Aligner Provider
+            </p>
+
+            <p style="font-size:0.88rem;color:#334155;line-height:1.45;margin-bottom:14px">
+              Focuses on adult clear aligners, self-ligating aesthetic ceramic braces, bite correction, and interceptive orthodontic growth guidance for teens and kids.
+            </p>
+
+            <div style="margin-bottom:16px">
+              <span class="specialist-tag">🦷 Clear Aligners</span>
+              <span class="specialist-tag">📐 Bite Correction</span>
+              <span class="specialist-tag">💎 Ceramic Braces</span>
+              <span class="specialist-tag">👶 Pediatric Ortho</span>
+            </div>
+
+            <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <small class="muted" style="display:block;font-size:0.75rem">OPERATORY SUITE</small>
+                <strong style="font-size:0.86rem">Ortho Studio (Chair 3)</strong>
+              </div>
+              <a class="btn btn-sm" href="appointment.html">Book Visit →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Dr. Vikramaditya Rao -->
+        <div class="specialist-card">
+          <div class="specialist-img-wrap">
+            <img src="images/dr_vikram_rao.jpg" alt="Dr. Vikramaditya Rao - Oral & Maxillofacial Surgeon" loading="lazy">
+            <div class="specialist-badge-pill">
+              <span class="pulse-dot" style="background:#10b981;width:8px;height:8px"></span>
+              <span>Available · Chair 4</span>
+            </div>
+          </div>
+          <div class="specialist-body">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+              <div>
+                <h3 style="margin-bottom:2px;font-size:1.25rem">Dr. Vikramaditya Rao</h3>
+                <p style="color:var(--primary);font-weight:700;font-size:0.86rem">Chief Oral & Maxillofacial Surgeon</p>
+              </div>
+              <span class="badge warning" style="font-size:0.75rem">14+ Yrs Exp</span>
+            </div>
+
+            <p class="muted" style="font-size:0.86rem;margin-bottom:12px">
+              BDS, MDS - Oral & Maxillofacial Surgery (CMC Vellore)<br>
+              Fellow of International Congress of Oral Implantologists (FICOI)
+            </p>
+
+            <p style="font-size:0.88rem;color:#334155;line-height:1.45;margin-bottom:14px">
+              Renowned for complex 3D-guided dental implantology, painless impacted wisdom tooth extractions, bone grafting, sinus lifts, and facial trauma reconstruction.
+            </p>
+
+            <div style="margin-bottom:16px">
+              <span class="specialist-tag">🔩 Dental Implants</span>
+              <span class="specialist-tag">🦷 Wisdom Impactions</span>
+              <span class="specialist-tag">🏥 Bone Grafting</span>
+              <span class="specialist-tag">⚡ Sinus Floor Lift</span>
+            </div>
+
+            <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <small class="muted" style="display:block;font-size:0.75rem">OPERATORY SUITE</small>
+                <strong style="font-size:0.86rem">Surgical Suite (Chair 4)</strong>
+              </div>
+              <a class="btn btn-sm" href="appointment.html">Book Visit →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Dr. Priya Nair -->
+        <div class="specialist-card">
+          <div class="specialist-img-wrap">
+            <img src="images/dr_priya_nair.jpg" alt="Dr. Priya Nair - Periodontist & Laser Surgeon" loading="lazy">
+            <div class="specialist-badge-pill">
+              <span class="pulse-dot" style="background:#10b981;width:8px;height:8px"></span>
+              <span>Available · Chair 5</span>
+            </div>
+          </div>
+          <div class="specialist-body">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+              <div>
+                <h3 style="margin-bottom:2px;font-size:1.25rem">Dr. Priya Nair</h3>
+                <p style="color:var(--primary);font-weight:700;font-size:0.86rem">Senior Periodontist & Laser Specialist</p>
+              </div>
+              <span class="badge success" style="font-size:0.75rem">11+ Yrs Exp</span>
+            </div>
+
+            <p class="muted" style="font-size:0.86rem;margin-bottom:12px">
+              BDS, MDS - Periodontology & Oral Implantology (Manipal)<br>
+              Certified LANAP® Laser Periodontal Clinician
+            </p>
+
+            <p style="font-size:0.88rem;color:#334155;line-height:1.45;margin-bottom:14px">
+              Specializes in minimally invasive laser gum treatments, gum recession grafting, cosmetic gum depigmentation, bone regeneration, and peri-implantitis management.
+            </p>
+
+            <div style="margin-bottom:16px">
+              <span class="specialist-tag">🌿 Laser Gum Therapy</span>
+              <span class="specialist-tag">🩹 Recession Grafting</span>
+              <span class="specialist-tag">✨ Gummy Smile Fix</span>
+              <span class="specialist-tag">🔬 Deep Flap Surgery</span>
+            </div>
+
+            <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <small class="muted" style="display:block;font-size:0.75rem">OPERATORY SUITE</small>
+                <strong style="font-size:0.86rem">Periodontal Suite (Chair 5)</strong>
+              </div>
+              <a class="btn btn-sm" href="appointment.html">Book Visit →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Dr. Arvind Deshmukh -->
+        <div class="specialist-card">
+          <div class="specialist-img-wrap">
+            <img src="images/dr_arvind_deshmukh.jpg" alt="Dr. Arvind Deshmukh - Pediatric Dentist" loading="lazy">
+            <div class="specialist-badge-pill">
+              <span class="pulse-dot" style="background:#10b981;width:8px;height:8px"></span>
+              <span>Available · Chair 6</span>
+            </div>
+          </div>
+          <div class="specialist-body">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+              <div>
+                <h3 style="margin-bottom:2px;font-size:1.25rem">Dr. Arvind Deshmukh</h3>
+                <p style="color:var(--primary);font-weight:700;font-size:0.86rem">Lead Pediatric Dentist & Pedodontist</p>
+              </div>
+              <span class="badge info" style="font-size:0.75rem">9+ Yrs Exp</span>
+            </div>
+
+            <p class="muted" style="font-size:0.86rem;margin-bottom:12px">
+              BDS, MDS - Pediatric & Preventive Dentistry (Nair Hospital)<br>
+              Active Member of Indian Society of Pedodontics (ISPPD)
+            </p>
+
+            <p style="font-size:0.88rem;color:#334155;line-height:1.45;margin-bottom:14px">
+              Dedicated to compassionate, anxiety-free dentistry for infants, kids, and adolescents. Expert in painless pit & fissure sealants, pediatric crowns, and habit interceptive appliances.
+            </p>
+
+            <div style="margin-bottom:16px">
+              <span class="specialist-tag">👶 Gentle Child Care</span>
+              <span class="specialist-tag">🛡️ Pit & Fissure Seal</span>
+              <span class="specialist-tag">👑 Zirconia Crowns</span>
+              <span class="specialist-tag">🧸 Anxiety-Free Visits</span>
+            </div>
+
+            <div style="margin-top:auto;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <small class="muted" style="display:block;font-size:0.75rem">OPERATORY SUITE</small>
+                <strong style="font-size:0.86rem">Pediatric Suite (Chair 6)</strong>
+              </div>
+              <a class="btn btn-sm" href="appointment.html">Book Visit →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>🦷 DentaCare</h3>
+        <p>Smart dental clinic management system with connected patient-treatment workflows.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <p>
+          <a href="services.html">Services Offered</a><br>
+          <a href="appointment.html">Book Appointment</a><br>
+          <a href="login.html">Patient & Staff Portal</a><br>
+          <a href="about.html">Our Specialists</a>
+        </p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>+91 98765 43210<br>hello@dentacare.demo<br>Mon–Sat, 9:00 AM–7:00 PM</p>
+      </div>
+    </div>
+    <div class="container" style="margin-top:28px;border-top:1px solid #28585e;padding-top:18px">
+      © <span data-year></span> DentaCare. Academic project prototype.
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Dental Clinic | DentaCare</title>
+  <script>
+    // Immediate Theme Engine (Prevents Light/Dark flash before render)
+    try {
+      const savedTheme = localStorage.getItem("dentaCareTheme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <a class="logo" href="index.html">
+      <span class="logo-icon">🦷</span>
+      <span>DentaCare</span>
+    </a>
+    <div class="navlinks">
+      <a class="active" href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">Specialists</a>
+      <a href="appointment.html">Book Visit</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <!-- Theme Day / Night Toggle -->
+      <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" type="button" title="Switch to Night Mode (Dark)" aria-label="Toggle Night/Day Mode">
+        <span class="theme-icon">🌙</span>
+        <span class="theme-label">Dark</span>
+      </button>
+      <a class="btn secondary btn-sm" href="login.html">🔒 Portal Login</a>
+      <a class="btn btn-sm" href="appointment.html">+ Book Visit</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </nav>
+
+  <!-- 1. HERO SECTION WITH INTERACTIVE OPERATORY CARD -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Smart Dental Clinic Care</div>
+        <h1>Better records.<br>Better treatment.<br>Better smiles.</h1>
+        <p class="lead">DentaCare connects patient consultations, doctor scheduling, treatment stages and recovery follow-ups in one gentle, organized experience.</p>
+        <div class="hero-actions">
+          <a class="btn" href="appointment.html">📅 Book an Appointment</a>
+          <a class="btn secondary" href="services.html">✨ Explore Services</a>
+          <a class="btn secondary" href="login.html">👤 Patient Health Portal</a>
+        </div>
+      </div>
+
+      <!-- Modern Interactive Hero Operatory & Booking Card -->
+      <div class="hero-interactive-card">
+        <div class="hero-card-header">
+          <div class="live-status-pill">
+            <span class="pulse-dot"></span>
+            <span>Live Operatory Status</span>
+          </div>
+          <span class="badge info" style="font-size:0.75rem">6 Operatories Online</span>
+        </div>
+
+        <div class="operatory-list">
+          <div class="operatory-row">
+            <div class="operatory-left">
+              <span class="operatory-dot busy"></span>
+              <div>
+                <strong>Suite 1 (Rotary Endo)</strong>
+                <span class="operatory-doc">Dr. Rohan Kapoor • In Procedure</span>
+              </div>
+            </div>
+            <span class="status-tag occupied">Occupied</span>
+          </div>
+
+          <div class="operatory-row active-now">
+            <div class="operatory-left">
+              <span class="operatory-dot ready"></span>
+              <div>
+                <strong>Suite 2 (Esthetics & Smile)</strong>
+                <span class="operatory-doc">Dr. Ananya Mehta • Next at 3:30 PM</span>
+              </div>
+            </div>
+            <span class="status-tag ready">Ready</span>
+          </div>
+
+          <div class="operatory-row">
+            <div class="operatory-left">
+              <span class="operatory-dot ready"></span>
+              <div>
+                <strong>Suite 4 (Surgery & Implants)</strong>
+                <span class="operatory-doc">Dr. Vikram Rao • Sanitized & Open</span>
+              </div>
+            </div>
+            <span class="status-tag ready">Ready</span>
+          </div>
+        </div>
+
+        <div class="next-slot-callout">
+          <div class="next-slot-info">
+            <span class="next-slot-tag">⚡ Next Slot Today</span>
+            <strong>3:30 PM – 4:15 PM</strong>
+            <span class="muted" style="font-size:0.8rem">Dr. Ananya Mehta (Suite 2)</span>
+          </div>
+          <a href="appointment.html" class="btn btn-sm">Reserve Slot</a>
+        </div>
+
+        <div class="hero-card-trust">
+          <div class="trust-stat">
+            <span class="trust-stars">⭐ 4.9/5</span>
+            <span class="trust-text">480+ Reviews</span>
+          </div>
+          <div class="trust-stat">
+            <span class="trust-icon">🛡️</span>
+            <span class="trust-text">Class-B Sterile</span>
+          </div>
+          <div class="trust-stat">
+            <span class="trust-icon">🆔</span>
+            <span class="trust-text">Digital Patient ID</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. HOW DENTACARE WORKS (PATIENT JOURNEY STEPPER) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">The Patient Journey</div>
+        <h2>How DentaCare Works</h2>
+        <p class="muted">A transparent, pain-free dental journey from your first online click to full recovery.</p>
+      </div>
+
+      <div class="stepper-grid">
+        <div class="step-card">
+          <div>
+            <div class="step-num">01</div>
+            <h3>Select & Book</h3>
+            <p class="muted">Pick your preferred doctor, time slot, and reason for visit in under 60 seconds with zero waiting room hold.</p>
+          </div>
+          <div class="step-badge">Instant Booking</div>
+        </div>
+
+        <div class="step-card">
+          <div>
+            <div class="step-num">02</div>
+            <h3>Unique ID Issued</h3>
+            <p class="muted">Receive an automated Unique Patient ID (e.g., DC1028) and digital booking confirmation slip for paperless check-in.</p>
+          </div>
+          <div class="step-badge">100% Digital Slip</div>
+        </div>
+
+        <div class="step-card">
+          <div>
+            <div class="step-num">03</div>
+            <h3>Painless Precision Care</h3>
+            <p class="muted">Experience gentle, microscope-guided treatments in high-sterility operatory suites with modern 3D digital imaging.</p>
+          </div>
+          <div class="step-badge">Hospital-Grade Safety</div>
+        </div>
+
+        <div class="step-card">
+          <div>
+            <div class="step-num">04</div>
+            <h3>Connected Timeline</h3>
+            <p class="muted">Log in anytime to review your confidential clinical notes, treatment stages, and postoperative recall alerts.</p>
+          </div>
+          <div class="step-badge">Private Portal</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CORE CLINICAL SPECIALTIES PREVIEW -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Clinical Specialties</div>
+        <h2>Comprehensive Dental Solutions</h2>
+        <p class="muted">Advanced restorative, preventive, and cosmetic treatments powered by modern digital dentistry.</p>
+      </div>
+
+      <div class="grid-4">
+        <div class="specialty-card">
+          <div>
+            <div class="specialty-icon">🛡️</div>
+            <h3>Preventive & Hygiene</h3>
+            <p class="muted">Ultrasonic scaling, air-flow stain removal, cavity remineralization, and fluoride varnish protection.</p>
+            <ul class="specialty-features">
+              <li>Painless calculus cleaning</li>
+              <li>Early decay detection</li>
+              <li>Gum health evaluation</li>
+            </ul>
+          </div>
+          <a href="appointment.html" class="btn-outline-sm" style="margin-top:18px;width:100%;justify-content:center">Book Checkup →</a>
+        </div>
+
+        <div class="specialty-card">
+          <div>
+            <div class="specialty-icon">🔬</div>
+            <h3>Micro-Endodontics</h3>
+            <p class="muted">Rotary single-sitting root canal therapy under high-powered magnification for 98.7% tooth salvage.</p>
+            <ul class="specialty-features">
+              <li>Zeiss microscope precision</li>
+              <li>Painless computerized anesthesia</li>
+              <li>Laser canal disinfection</li>
+            </ul>
+          </div>
+          <a href="appointment.html" class="btn-outline-sm" style="margin-top:18px;width:100%;justify-content:center">Book Root Canal →</a>
+        </div>
+
+        <div class="specialty-card">
+          <div>
+            <div class="specialty-icon">✨</div>
+            <h3>Clear Aligners</h3>
+            <p class="muted">Discreet orthodontic teeth alignment using custom clear trays with 3D digital smile simulation.</p>
+            <ul class="specialty-features">
+              <li>Nearly invisible trays</li>
+              <li>No dietary restrictions</li>
+              <li>Fast bi-weekly checks</li>
+            </ul>
+          </div>
+          <a href="appointment.html" class="btn-outline-sm" style="margin-top:18px;width:100%;justify-content:center">Aligner Consultation →</a>
+        </div>
+
+        <div class="specialty-card">
+          <div>
+            <div class="specialty-icon">🦷</div>
+            <h3>Implants & Esthetics</h3>
+            <p class="muted">Permanent titanium tooth replacements, monolithic zirconia crowns, and natural porcelain veneers.</p>
+            <ul class="specialty-features">
+              <li>3D guided implant surgery</li>
+              <li>Same-day temporary crown</li>
+              <li>Natural shade matching</li>
+            </ul>
+          </div>
+          <a href="appointment.html" class="btn-outline-sm" style="margin-top:18px;width:100%;justify-content:center">Book Esthetics →</a>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="about.html" class="btn">Meet Our 6 Board-Certified Specialists →</a>
+        <a href="services.html" class="btn secondary">View All 12+ Dental Procedures & Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. VERIFIED PATIENT REVIEWS / TESTIMONIALS (SOCIAL PROOF) -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Patient Stories</div>
+        <h2>Loved by 500+ Smiling Patients</h2>
+        <p class="muted">Real feedback from patients who experienced our calm, transparent dental care.</p>
+      </div>
+
+      <div class="grid">
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"I had intense anxiety about getting a root canal, but Dr. Rohan Kapoor took time to show me the 3D scan and numbed the area completely painlessly. Having my appointment slip and history online is fantastic!"</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">VS</div>
+            <div>
+              <strong>Vikram Sengupta</strong>
+              <div class="muted" style="font-size:0.8rem">Root Canal & Zirconia Crown • <span style="color:var(--success);font-weight:700">✓ Verified Patient</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Dr. Ananya Mehta was wonderful with my 9-year-old daughter. The clinic is spotless, the digital operatory queue actually runs right on time, and the team is exceptionally kind. Best clinic experience ever."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SR</div>
+            <div>
+              <strong>Sneha Ramachandran</strong>
+              <div class="muted" style="font-size:0.8rem">Pediatric Care & Sealants • <span style="color:var(--success);font-weight:700">✓ Verified Patient</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"I started my clear aligner treatment two months ago. The 3D scan preview blew me away—no sticky paste impressions! The automated recall reminders ensure I never miss a refinement check."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AM</div>
+            <div>
+              <strong>Arjun Malhotra</strong>
+              <div class="muted" style="font-size:0.8rem">Clear Aligner Therapy • <span style="color:var(--success);font-weight:700">✓ Verified Patient</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. INTERACTIVE FAQ ACCORDION -->
+  <section class="section" style="padding-top:0">
+    <div class="container" style="max-width:860px">
+      <div class="section-head">
+        <div class="eyebrow">Frequently Asked Questions</div>
+        <h2>Got Questions? We Have Answers.</h2>
+        <p class="muted">Everything you need to know about booking, patient privacy, and our clinic policies.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary class="faq-summary">How do I get my Unique Patient ID?</summary>
+          <div class="faq-answer">
+            Your Unique Patient ID (e.g., <code>DC1028</code>) is generated automatically as soon as you confirm an appointment on our booking page or register with clinic reception. It is displayed on your printable digital booking slip and allows you to log in to access your personal dental timeline.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">Is my medical information private from other patients?</summary>
+          <div class="faq-answer">
+            Yes, strictly. DentaCare implements enterprise role-based security. Full operatory management, clinical diagnosis logs, and all patient records are restricted to licensed clinic staff. Patients can only view their own confidential dental history using their Unique Patient ID.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">Do you handle emergency dental walk-ins?</summary>
+          <div class="faq-answer">
+            Absolutely. We reserve daily emergency buffer slots across all three operatories for severe tooth pain, fractured teeth, or trauma. You can book the next available slot online or call reception directly at +91 98765 43210 for prompt care.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">What payment methods and insurance do you accept?</summary>
+          <div class="faq-answer">
+            We accept all UPI applications (Google Pay, PhonePe, Paytm), credit/debit cards, net banking, and zero-interest EMI plans for aligners and implants. We also provide itemized medical invoices with procedure codes for corporate dental health insurance claims.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">How does the automated follow-up reminder work?</summary>
+          <div class="faq-answer">
+            After any restorative or surgical procedure, our system logs your recommended healing evaluation date. You can track your upcoming recall date in your patient portal, and reception will follow up to ensure your recovery is smooth.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>🦷 DentaCare</h3>
+        <p>Smart dental clinic management system with connected patient-treatment workflows.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <p>
+          <a href="services.html">Services Offered</a><br>
+          <a href="appointment.html">Book Appointment</a><br>
+          <a href="login.html">Patient & Staff Portal</a><br>
+          <a href="about.html">Our Specialists</a>
+        </p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>+91 98765 43210<br>hello@dentacare.demo<br>Mon–Sat, 9:00 AM–7:00 PM</p>
+      </div>
+    </div>
+    <div class="container" style="margin-top:28px;border-top:1px solid #28585e;padding-top:18px">
+      © <span data-year></span> DentaCare. Academic project prototype.
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

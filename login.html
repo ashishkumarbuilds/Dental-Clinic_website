@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{const t=localStorage.getItem('dentaCareTheme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Portal Access & Login | DentaCare</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .login-container {
+      max-width: 520px;
+      margin: 50px auto;
+      padding: 0 16px;
+    }
+    .login-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: var(--shadow-xl);
+    }
+    .role-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #f1f5f9;
+      border-radius: 14px;
+      padding: 5px;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .role-tab-btn {
+      border: 0;
+      background: transparent;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #64748b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .role-tab-btn.active {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: var(--shadow-xs);
+    }
+    .portal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a class="logo" href="index.html">
+      <span class="logo-icon">🦷</span>
+      <span>DentaCare</span>
+    </a>
+    <div class="navlinks" id="mainNavLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Doctors</a>
+      <a href="appointment.html">Book Appointment</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions" id="navAuthAction">
+      <a class="btn secondary" href="index.html">← Back to Website</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </nav>
+
+  <div class="login-container">
+    <div class="login-card">
+      <div style="text-align:center;margin-bottom:20px">
+        <span class="logo-icon" style="margin:0 auto 10px;width:48px;height:48px;font-size:1.8rem">🦷</span>
+        <h1 style="font-size:1.6rem;margin-bottom:4px">DentaCare Access Portal</h1>
+        <p class="muted" style="font-size:0.9rem">Role-based security preserving patient confidentiality</p>
+      </div>
+
+      <!-- Role Selector Tabs -->
+      <div class="role-tabs">
+        <button class="role-tab-btn active" id="tabDoctor" onclick="switchLoginTab('doctor')">
+          🩺 Doctor / Staff
+        </button>
+        <button class="role-tab-btn" id="tabPatient" onclick="switchLoginTab('patient')">
+          👤 Patient Portal
+        </button>
+      </div>
+
+      <!-- 1. Doctor / Clinical Staff Login Form -->
+      <form id="doctorLoginForm" onsubmit="handleDoctorLogin(event)">
+        <span class="portal-badge" style="background:#ccfbf1;color:#0f766e">
+          🔒 Clinical & Administrative Access
+        </span>
+        <p class="muted" style="font-size:0.86rem;margin-bottom:16px">
+          Restricted to authorized dentists and clinical staff for records, surgical planning, and operations.
+        </p>
+
+        <div class="field" style="margin-bottom:14px">
+          <label>Staff Email or ID</label>
+          <input id="staffEmail" type="text" required value="doctor@dentacare.demo" placeholder="e.g. doctor@dentacare.demo">
+        </div>
+
+        <div class="field" style="margin-bottom:20px">
+          <label>Clinic Security PIN / Password</label>
+          <input id="staffPin" type="password" required value="1234" placeholder="Enter PIN (Default: 1234)">
+        </div>
+
+        <button class="btn" type="submit" style="width:100%;padding:13px;font-size:0.95rem">
+          Sign In to Clinical Console →
+        </button>
+      </form>
+
+      <!-- 2. Patient Portal Form -->
+      <form id="patientLoginForm" style="display:none" onsubmit="handlePatientLogin(event)">
+        <span class="portal-badge" style="background:#e0f2fe;color:#0369a1">
+          🛡️ Private Patient Space
+        </span>
+        <p class="muted" style="font-size:0.86rem;margin-bottom:16px">
+          Access your personal dental records, upcoming visits, and treatment recovery progress securely.
+        </p>
+
+        <div class="field" style="margin-bottom:14px">
+          <label>Patient ID or Registered Phone</label>
+          <input id="patientIdInput" type="text" required placeholder="e.g. DC1024, DC1028 or +91 98765 11001">
+        </div>
+
+        <button class="btn" type="submit" style="width:100%;padding:13px;font-size:0.95rem">
+          Access My Health Timeline →
+        </button>
+
+        <div style="margin-top:16px;text-align:center">
+          <a href="appointment.html" style="font-size:0.85rem;color:var(--primary);font-weight:600">
+            Not registered yet? Book a visit to get a unique Patient ID →
+          </a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Privacy Compliance Note -->
+    <p class="muted" style="text-align:center;font-size:0.82rem;margin-top:20px">
+      🔒 Healthcare Confidentiality: Patients can only view their individual records. Internal operatory schedules and medical records of other patients are restricted to licensed clinic personnel.
+    </p>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script>
+    function switchLoginTab(type) {
+      const docTab = document.getElementById("tabDoctor");
+      const patTab = document.getElementById("tabPatient");
+      const docForm = document.getElementById("doctorLoginForm");
+      const patForm = document.getElementById("patientLoginForm");
+
+      if (type === "doctor") {
+        docTab.classList.add("active");
+        patTab.classList.remove("active");
+        docForm.style.display = "block";
+        patForm.style.display = "none";
+      } else {
+        patTab.classList.add("active");
+        docTab.classList.remove("active");
+        patForm.style.display = "block";
+        docForm.style.display = "none";
+      }
+    }
+
+    function handleDoctorLogin(e) {
+      e.preventDefault();
+      const pin = document.getElementById("staffPin").value;
+      if (pin !== "1234") {
+        showToast("Invalid Staff PIN. Demo PIN is: 1234", "error");
+        return;
+      }
+      quickDoctorLogin("Dr. Ananya Mehta (General & Cosmetic)");
+    }
+
+    function quickDoctorLogin(doctorName) {
+      const user = {
+        role: "doctor",
+        name: doctorName || "Dr. Rohan Kapoor",
+        email: "doctor@dentacare.demo",
+        loggedInAt: new Date().toISOString()
+      };
+      setCurrentUser(user);
+      showToast(`Welcome back, ${user.name}! Clinical access granted.`, "success");
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirect = urlParams.get("redirect") || "dashboard.html";
+      setTimeout(() => window.location.href = redirect, 500);
+    }
+
+    function handlePatientLogin(e) {
+      e.preventDefault();
+      const idOrPhone = document.getElementById("patientIdInput").value.trim();
+      quickPatientLogin(idOrPhone);
+    }
+
+    function quickPatientLogin(idOrPhone) {
+      if (!idOrPhone) {
+        showToast("Please enter your Patient ID or registered mobile phone.", "error");
+        return;
+      }
+      const patients = getData("patients");
+      const cleanInput = idOrPhone.trim().toLowerCase().replace(/\s+/g, "");
+      const patient = patients.find(p => 
+        (p.id && p.id.toLowerCase() === cleanInput) || 
+        (p.phone && p.phone.toLowerCase().replace(/\s+/g, "") === cleanInput)
+      );
+
+      if (!patient) {
+        showToast(`Patient record for "${idOrPhone}" not found. Please verify your ID or book a visit first.`, "error");
+        return;
+      }
+
+      const user = {
+        role: "patient",
+        id: patient.id,
+        name: patient.name,
+        phone: patient.phone,
+        loggedInAt: new Date().toISOString()
+      };
+      setCurrentUser(user);
+      showToast(`Welcome, ${user.name}! Accessing your health record.`, "success");
+      setTimeout(() => window.location.href = `history.html?id=${encodeURIComponent(user.id)}`, 500);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirect = urlParams.get("redirect");
+      const tab = urlParams.get("tab");
+      const id = urlParams.get("id");
+
+      if (tab === "patient" || id) {
+        switchLoginTab("patient");
+        if (id) {
+          const patInput = document.getElementById("patientIdInput");
+          if (patInput) patInput.value = id;
+          const cardHeader = document.querySelector(".login-card");
+          if (cardHeader) {
+            const welcomeDiv = document.createElement("div");
+            welcomeDiv.style.cssText = "background:#f0fdfa;border:1px solid #99f6e4;padding:12px 16px;border-radius:12px;margin-bottom:20px;color:#0f766e;font-size:0.86rem;font-weight:600;display:flex;align-items:center;gap:10px";
+            welcomeDiv.innerHTML = `<span>🎉</span> <span><b>Appointment Confirmed!</b> Your Patient ID is <b>${esc(id)}</b>. Click below to view your personalized care record.</span>`;
+            cardHeader.insertBefore(welcomeDiv, cardHeader.querySelector(".role-tabs"));
+          }
+        }
+      } else if (redirect) {
+        switchLoginTab("doctor");
+        const cardHeader = document.querySelector(".login-card");
+        if (cardHeader) {
+          const alertDiv = document.createElement("div");
+          alertDiv.style.cssText = "background:#fef2f2;border:1px solid #fecaca;padding:12px 16px;border-radius:12px;margin-bottom:20px;color:#991b1b;font-size:0.86rem;font-weight:600;display:flex;align-items:center;gap:10px";
+          alertDiv.innerHTML = "<span>🔒</span> <span><b>Clinical Access Restricted:</b> The requested page contains confidential patient files and surgery schedules. Please authenticate with Doctor / Staff credentials.</span>";
+          cardHeader.insertBefore(alertDiv, cardHeader.querySelector(".role-tabs"));
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{const t=localStorage.getItem('dentaCareTheme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Appointments & Chair Scheduling | DentaCare</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="logo" href="index.html">
+      <span class="logo-icon">🦷</span>
+      <span>DentaCare</span>
+    </a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">Specialists</a>
+      <a class="active" href="appointment.html">Book Visit</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn secondary btn-sm" href="login.html">🔒 Portal Login</a>
+      <a class="btn btn-sm" href="appointment.html">+ Book Visit</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-head">
+    <div class="container">
+      <div class="page-head-bar">
+        <div>
+          <div class="eyebrow">Outpatient Scheduling</div>
+          <h1 style="margin-bottom:4px">Clinical Appointment Desk</h1>
+          <p>Book specialist doctor chairs, assign operatory slots, and generate digital patient slips.</p>
+        </div>
+        <div class="live-pill">
+          <span class="pulse-dot"></span>
+          <span>Operatory Schedule Active</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Booking Form -->
+  <section class="section" style="padding-top:35px">
+    <div class="container">
+      <form id="appointmentForm" class="form card" style="max-width:960px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:14px">
+          <div>
+            <h2 style="font-size:1.45rem;margin-bottom:4px">New Clinical Appointment</h2>
+            <p class="muted" style="font-size:0.9rem">Select patient profile, attending doctor, and preferred time slot.</p>
+          </div>
+          <span class="badge info">Step 1 of 2 · Booking</span>
+        </div>
+
+        <div class="form-grid">
+          <!-- Dynamic Patient Identification Section -->
+          <div class="field full" id="patientIdentificationBox">
+            <!-- Doctor / Staff Patient Selection (shown when Doctor is logged in) -->
+            <div id="doctorPatientFields" style="display:none">
+              <label>👤 Select Registered Patient (Staff Console) *</label>
+              <select name="patient" class="patient-picker">
+                <option value="">Loading registered patients...</option>
+              </select>
+              <div id="patientPreviewCard" class="patient-preview-card"></div>
+              <div class="field full" id="customPatientWrap" style="display:none;margin-top:10px">
+                <label>✎ Enter Walk-in / New Patient Name *</label>
+                <input name="customPatient" placeholder="e.g. Vikramaditya Singh">
+              </div>
+            </div>
+
+            <!-- Logged-in Patient Banner (shown when Patient is logged in) -->
+            <div id="loggedInPatientBanner" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:16px 20px">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+                <div>
+                  <span class="badge success" style="margin-bottom:6px">Logged-In Patient</span>
+                  <h3 id="loggedInPatientName" style="margin:0;font-size:1.15rem">Patient Name</h3>
+                  <p class="muted" id="loggedInPatientInfo" style="font-size:0.86rem;margin-top:3px">ID: DC1024 · Phone: +91 98765 11001</p>
+                </div>
+                <span style="font-size:1.8rem">✅</span>
+              </div>
+            </div>
+
+            <!-- Public / New Patient Fields (Default for Guests) -->
+            <div id="guestPatientFields">
+              <div style="background:#f0fdfa;border:1px solid #99f6e4;border-radius:14px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span style="font-size:1.5rem">🆔</span>
+                  <div>
+                    <strong style="color:#0f766e;font-size:0.92rem">Instant Patient Registration</strong>
+                    <p class="muted" style="font-size:0.83rem;margin:0">A unique Patient ID will be assigned upon booking so you can log into your patient care portal anytime.</p>
+                  </div>
+                </div>
+                <a href="login.html" class="btn secondary btn-sm" style="font-size:0.8rem">Already registered? Log in 🔑</a>
+              </div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                <div class="field">
+                  <label>👤 Full Name *</label>
+                  <input name="patientFullName" id="patientFullName" placeholder="e.g. Vikram Malhotra">
+                </div>
+                <div class="field">
+                  <label>📞 Mobile Phone *</label>
+                  <input name="guestPhone" id="guestPhoneInput" placeholder="e.g. +91 98765 22001">
+                </div>
+                <div class="field">
+                  <label>🎂 Age (Optional)</label>
+                  <input name="patientAge" id="patientAgeInput" type="number" min="1" max="120" placeholder="e.g. 29">
+                </div>
+                <div class="field">
+                  <label>⚧ Gender (Optional)</label>
+                  <select name="patientGender" id="patientGenderSelect">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor Selection Interactive Cards -->
+          <div class="field full">
+            <label>🩺 Select Attending Specialist *</label>
+            <input type="hidden" name="dentist" id="selectedDentistInput" value="Dr. Rohan Kapoor (Endodontist)" required>
+
+            <div class="dentist-cards-grid">
+              <div class="dentist-card-option selected" data-dentist="Dr. Rohan Kapoor (Endodontist)">
+                <img src="images/dr_rohan_kapoor.jpg" class="dentist-card-thumb" alt="Dr. Rohan Kapoor">
+                <div class="dentist-card-title">Dr. Rohan Kapoor</div>
+                <div class="dentist-card-sub">Endodontics & Root Canal</div>
+                <span class="badge warning" style="margin-top:6px;width:fit-content">Chair 2 · Root Canal Suite</span>
+              </div>
+
+              <div class="dentist-card-option" data-dentist="Dr. Ananya Mehta (Cosmetic & General)">
+                <img src="images/dr_ananya_mehta.jpg" class="dentist-card-thumb" alt="Dr. Ananya Mehta">
+                <div class="dentist-card-title">Dr. Ananya Mehta</div>
+                <div class="dentist-card-sub">Cosmetic & General Dentistry</div>
+                <span class="badge success" style="margin-top:6px;width:fit-content">Chair 1 · Aesthetic Suite</span>
+              </div>
+
+              <div class="dentist-card-option" data-dentist="Dr. Simran Gill (Orthodontics & Aligners)">
+                <img src="images/dr_simran_gill.jpg" class="dentist-card-thumb" alt="Dr. Simran Gill">
+                <div class="dentist-card-title">Dr. Simran Gill</div>
+                <div class="dentist-card-sub">Orthodontics & Clear Aligners</div>
+                <span class="badge info" style="margin-top:6px;width:fit-content">Chair 3 · Ortho Studio</span>
+              </div>
+
+              <div class="dentist-card-option" data-dentist="Dr. Vikramaditya Rao (Oral & Maxillofacial Surgery)">
+                <img src="images/dr_vikram_rao.jpg" class="dentist-card-thumb" alt="Dr. Vikramaditya Rao">
+                <div class="dentist-card-title">Dr. Vikram Rao</div>
+                <div class="dentist-card-sub">Oral Surgery & Implants</div>
+                <span class="badge warning" style="margin-top:6px;width:fit-content">Chair 4 · Surgical Suite</span>
+              </div>
+
+              <div class="dentist-card-option" data-dentist="Dr. Priya Nair (Periodontics & Laser)">
+                <img src="images/dr_priya_nair.jpg" class="dentist-card-thumb" alt="Dr. Priya Nair">
+                <div class="dentist-card-title">Dr. Priya Nair</div>
+                <div class="dentist-card-sub">Periodontics & Laser Gums</div>
+                <span class="badge success" style="margin-top:6px;width:fit-content">Chair 5 · Laser Suite</span>
+              </div>
+
+              <div class="dentist-card-option" data-dentist="Dr. Arvind Deshmukh (Pediatric Dentistry)">
+                <img src="images/dr_arvind_deshmukh.jpg" class="dentist-card-thumb" alt="Dr. Arvind Deshmukh">
+                <div class="dentist-card-title">Dr. Arvind Deshmukh</div>
+                <div class="dentist-card-sub">Pediatric & Child Dentistry</div>
+                <span class="badge info" style="margin-top:6px;width:fit-content">Chair 6 · Pediatric Suite</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Date & Time Slot Chips -->
+          <div class="field">
+            <label>📅 Appointment Date *</label>
+            <input type="date" name="date" required>
+          </div>
+
+          <div class="field">
+            <label>🕒 Time Slot *</label>
+            <input type="time" name="time" value="10:30" required>
+            <div class="slot-pills-wrap">
+              <span class="slot-pill selected" data-time="10:30">10:30 AM</span>
+              <span class="slot-pill" data-time="11:45">11:45 AM</span>
+              <span class="slot-pill" data-time="14:00">02:00 PM</span>
+              <span class="slot-pill" data-time="15:30">03:30 PM</span>
+              <span class="slot-pill" data-time="16:45">04:45 PM</span>
+              <span class="slot-pill" data-time="17:30">05:30 PM</span>
+            </div>
+          </div>
+
+          <!-- Procedure Visit Type & Phone -->
+          <div class="field">
+            <label>🦷 Clinical Procedure / Visit Type</label>
+            <select name="type">
+              <option>Routine Consultation & Screening 🔍</option>
+              <option>Preventive Cleaning & Scaling ✨</option>
+              <option>Root Canal Therapy (RCT) 🔬</option>
+              <option>Braces / Clear Aligner Review 😁</option>
+              <option>Dental Implant Consultation & 3D Planning 🔩</option>
+              <option>Wisdom Tooth Impaction & Extraction 🩹</option>
+              <option>Periodontal Laser Therapy & Gum Care 🌿</option>
+              <option>Pediatric Child Checkup & Sealants 👶</option>
+              <option>Crown & Bridge Impression 🛡️</option>
+              <option>Urgent Pain Relief 🚨</option>
+            </select>
+          </div>
+
+          <div class="field" id="generalPhoneWrap" style="display:none">
+            <label>📞 Contact Phone (Staff Record)</label>
+            <input name="phone" id="doctorModePhone" placeholder="+91 98765 43210">
+          </div>
+
+          <div class="field full" style="margin-top:10px">
+            <button class="btn" type="submit" style="width:100%;padding:14px;font-size:1rem">
+              Confirm Booking & Generate Appointment Slip ✨
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Scheduled Appointments Roster Table -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="table-toolbar">
+        <div>
+          <h2 style="margin-bottom:2px">Scheduled Clinical Roster</h2>
+          <p class="muted" style="font-size:0.88rem">Active outpatient chair allocations</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+          <button class="tab-btn active" data-filter="all" onclick="filterAppointmentsBy('all')">All</button>
+          <button class="tab-btn" data-filter="Scheduled" onclick="filterAppointmentsBy('Scheduled')">Scheduled</button>
+          <button class="tab-btn" data-filter="Completed" onclick="filterAppointmentsBy('Completed')">Completed</button>
+        </div>
+
+        <input id="appointmentSearch" class="search" placeholder="🔍 Search by patient, phone or specialist...">
+      </div>
+
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Slip ID</th>
+              <th>Patient</th>
+              <th>Attending Specialist</th>
+              <th>Date & Slot</th>
+              <th>Procedure</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="appointmentRows">
+            <!-- Dynamically populated by script.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>🦷 DentaCare Enterprise</h3>
+        <p>Smart dental clinic management system with connected patient-treatment workflows.</p>
+      </div>
+      <div>
+        <h3>Quick Navigation</h3>
+        <p>
+          <a href="services.html">Services Offered</a><br>
+          <a href="appointment.html">Book Appointment</a><br>
+          <a href="login.html">Patient & Staff Portal</a><br>
+          <a href="about.html">Our Specialists</a>
+        </p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>+91 98765 43210<br>hello@dentacare.demo<br>Mon–Sat, 9:00 AM–7:00 PM</p>
+      </div>
+    </div>
+    <div class="container" style="margin-top:28px;border-top:1px solid #28585e;padding-top:18px">
+      © <span data-year></span> DentaCare. Academic project prototype.
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

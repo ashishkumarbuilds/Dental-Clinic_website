@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{const t=localStorage.getItem('dentaCareTheme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>ToothMate — AI Dental Copilot & Clinical Assistant | DentaCare</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="logo" href="index.html">
+      <span class="logo-icon">🦷</span>
+      <span>DentaCare</span>
+    </a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">Specialists</a>
+      <a href="appointment.html">Book Visit</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn secondary btn-sm" href="login.html">🔒 Portal Login</a>
+      <a class="btn btn-sm" href="appointment.html">+ Book Visit</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </nav>
+
+  <section class="page-head">
+    <div class="container">
+      <div class="page-head-bar">
+        <div>
+          <div class="eyebrow">Smart Healthcare Intelligence</div>
+          <h1 style="margin-bottom:4px">✨ ToothMate AI Dental Copilot</h1>
+          <p>Dual-mode conversational AI for chairside clinical documentation, pharmacology, differential diagnosis, and patient health guidance.</p>
+        </div>
+        <div class="live-pill">
+          <span class="pulse-dot"></span>
+          <span>Online · Gemini 3.8 & Neural Core</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:24px;padding-bottom:50px">
+    <div class="container">
+      <div class="ai-workspace-grid">
+        <!-- LEFT: PROMPT COMMAND CENTER -->
+        <div class="ai-sidebar-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid var(--border);padding-bottom:10px">
+            <strong style="font-size:0.95rem;color:var(--dark)">Prompt Library</strong>
+            <span class="badge info" style="font-size:0.75rem">1-Click Run</span>
+          </div>
+
+          <div class="ai-mode-tabs" style="width:100%;margin-bottom:14px">
+            <button type="button" class="ai-mode-tab active" id="workspaceTabDoctor" onclick="setWorkspaceTab('doctor')" style="flex:1">🩺 Clinician Tools</button>
+            <button type="button" class="ai-mode-tab" id="workspaceTabPatient" onclick="setWorkspaceTab('patient')" style="flex:1">👤 Patient FAQ</button>
+          </div>
+
+          <!-- DOCTOR PROMPT CHIPS -->
+          <div id="workspaceDoctorPrompts" style="display:flex;flex-direction:column;gap:8px;overflow-y:auto;flex:1;padding-right:4px">
+            <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-top:4px">EHR & SOAP Notes</div>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('Draft a complete SOAP clinical note for Root Canal Therapy on Tooth #26 (Acute Irreversible Pulpitis). Include working length, irrigation protocol, and obturation sealer.')">
+              📋 SOAP Note: RCT Tooth #26
+            </button>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('Generate a SOAP clinical note for full contour Monolithic Zirconia crown preparation on Tooth #36. Include margin design, reduction depths, and shade selection.')">
+              📋 SOAP Note: Crown Prep #36
+            </button>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('Draft clinical documentation for surgical extraction of impacted mandibular third molar (#48) with bone troughing and 3-0 silk sutures.')">
+              📋 Surgical Note: Impaction #48
+            </button>
+
+            <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-top:10px">Pharmacology & Anesthesia</div>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('Calculate antibiotic and analgesic protocol for a 65kg adult with acute periapical abscess who is allergic to penicillin. Provide safe alternatives with dosages.')">
+              💊 Penicillin-Allergy Antibiotics
+            </button>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('What is the maximum safe dosage and cartridge count of 2% Lignocaine with 1:100,000 Epinephrine for a 55kg patient with controlled hypertension?')">
+              💉 Max Safe Anesthetic Dose (55kg)
+            </button>
+
+            <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-top:10px">Protocols & Guidelines</div>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('Compare tooth preparation reduction requirements for Monolithic Zirconia vs Lithium Disilicate (E.max) crowns. Include margin types and cementation guidelines.')">
+              📐 Zirconia vs E.max Reduction
+            </button>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('What are the key radiographic safety margins and bone density classifications (D1 to D4) for posterior mandibular dental implants?')">
+              🔩 Implant Safety Margins & Torques
+            </button>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('Summarize the clinical records, odontogram findings, and treatment progress for patient Rahul Sharma (DC1024).')">
+              📊 Patient Brief: Rahul Sharma
+            </button>
+          </div>
+
+          <!-- PATIENT PROMPT CHIPS -->
+          <div id="workspacePatientPrompts" style="display:none;flex-direction:column;gap:8px;overflow-y:auto;flex:1;padding-right:4px">
+            <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-top:4px">Common Concerns</div>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('Why do I get a sharp shooting pain in my tooth when I drink cold water or iced drinks?')">
+              ❄️ Sharp Pain with Cold Drinks
+            </button>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('What actually happens during a root canal treatment? Does it hurt, and how many appointments does it take?')">
+              🦷 What Happens During a Root Canal?
+            </button>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('What foods are safe to eat after having a tooth extracted, and how do I prevent dry socket?')">
+              🥣 Diet & Care After Tooth Extraction
+            </button>
+
+            <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-top:10px">Cosmetics & Orthodontics</div>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('How do invisible clear aligners compare to metal braces in terms of treatment time, comfort, and results?')">
+              🪥 Clear Aligners vs Metal Braces
+            </button>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('How many shades lighter can in-office laser teeth whitening get my teeth, and does it cause sensitivity?')">
+              ✨ Teeth Whitening Results & Sensitivity
+            </button>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('Why do my gums bleed when brushing, and does that mean I have periodontal disease?')">
+              🩸 Bleeding Gums While Brushing
+            </button>
+
+            <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin-top:10px">Costs & Emergencies</div>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('Explain the 0% interest EMI payment options available for dental implants and smile makeovers at DentaCare.')">
+              💳 How 0% EMI Financing Works
+            </button>
+            <button class="ai-prompt-chip" onclick="executeWorkspacePrompt('What should I immediately do if a permanent tooth is completely knocked out in an accident?')">
+              🚨 Knocked-Out Tooth Emergency Guide
+            </button>
+          </div>
+        </div>
+
+        <!-- CENTER: INTERACTIVE CONVERSATION STREAM -->
+        <div class="ai-center-chat-card">
+          <div class="ai-chat-header">
+            <div class="ai-header-left">
+              <div class="ai-avatar">🤖</div>
+              <div>
+                <div class="ai-header-title" id="fullAiTitle">ToothMate AI Clinical Copilot</div>
+                <div class="ai-status-pill">● Online · Neural Dental Reasoning Engine</div>
+              </div>
+            </div>
+            <div class="ai-header-controls">
+              <button class="ai-tool-btn" onclick="openAiSettingsModal()" title="AI Engine Settings">⚙️</button>
+              <button class="ai-tool-btn" onclick="clearWorkspaceChat()" title="Clear Conversation">🗑️</button>
+            </div>
+          </div>
+
+          <div class="ai-role-toggle-bar">
+            <div class="ai-mode-tabs">
+              <button type="button" class="ai-mode-tab active" id="fullModeTabPatient" onclick="switchFullAiMode('patient')">👤 Patient Care Mode</button>
+              <button type="button" class="ai-mode-tab" id="fullModeTabDoctor" onclick="switchFullAiMode('doctor')">🩺 Doctor Clinical Mode</button>
+            </div>
+            <div class="ai-active-patient-badge" id="fullContextBadge">Active Patient: Rahul Sharma (DC1024)</div>
+          </div>
+
+          <div class="ai-chat-body" id="fullChatMessages" style="flex:1">
+            <!-- Messages rendered dynamically -->
+          </div>
+
+          <div class="ai-typing-wrap" id="fullTypingIndicator" style="display:none">
+            <span class="muted" style="font-size:0.78rem">DentaCare AI is synthesizing clinical response...</span>
+            <span class="ai-typing-dot"></span>
+            <span class="ai-typing-dot"></span>
+            <span class="ai-typing-dot"></span>
+          </div>
+
+          <div class="ai-chat-footer">
+            <form class="ai-input-form" onsubmit="handleFullChatSubmit(event)">
+              <textarea class="ai-textarea" id="fullChatInput" placeholder="Type clinical query, symptom question, drug dosage check, or SOAP request..." rows="2"></textarea>
+              <button type="button" class="ai-tool-btn" onclick="toggleVoiceRecognition('fullChatInput')" title="Voice Dictation" style="background:transparent;color:var(--text-muted)">🎤</button>
+              <button type="submit" class="ai-send-btn" title="Send Query">➤</button>
+            </form>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:0.75rem;color:var(--text-muted)">
+              <span>💡 Press Shift + Enter for new line · Click prompt chips on left to auto-fill</span>
+              <span id="activeModelBadge" style="color:var(--primary);font-weight:700">DentaCare Neural Core (Zero Setup)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: CLINICAL CONTEXT & DOSSIER INSPECTOR -->
+        <div class="ai-sidebar-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid var(--border);padding-bottom:10px">
+            <strong style="font-size:0.95rem;color:var(--dark)">Patient Context</strong>
+            <span class="badge success" style="font-size:0.75rem">Live EHR</span>
+          </div>
+
+          <div class="field" style="margin-bottom:12px">
+            <label style="font-weight:700;font-size:0.84rem">Active Patient File:</label>
+            <select id="workspacePatientSelect" class="patient-picker" onchange="updateWorkspacePatientContext()" style="padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);width:100%;font-size:0.86rem">
+              <option value="DC1024">Rahul Sharma (DC1024)</option>
+              <option value="DC1025">Priya Patel (DC1025)</option>
+              <option value="DC1026">Amit Verma (DC1026)</option>
+              <option value="DC1027">Sneha Nair (DC1027)</option>
+              <option value="DC1028">Aarav Sharma (DC1028)</option>
+            </select>
+          </div>
+
+          <div id="workspacePatientDetailsCard" style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:16px;font-size:0.84rem">
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+              <strong id="wspName" style="color:var(--dark)">Rahul Sharma</strong>
+              <span class="badge info" id="wspId">DC1024</span>
+            </div>
+            <div class="muted" style="margin-bottom:4px">Age: <span id="wspAge">28</span> yrs · Male</div>
+            <div class="muted" style="margin-bottom:6px">Notes: <span id="wspHistory">Mild pulp sensitivity, allergic to penicillin.</span></div>
+            <div style="border-top:1px dashed var(--border);padding-top:6px;margin-top:6px">
+              <strong>Chart Conditions:</strong>
+              <div style="font-size:0.78rem;color:var(--primary);margin-top:2px">
+                #16 Caries · #26 RCT (In-Progress) · #36 Crown
+              </div>
+            </div>
+          </div>
+
+          <button class="btn secondary btn-sm" onclick="summarizeCurrentPatient()" style="width:100%;margin-bottom:16px">
+            📊 Generate Patient AI Summary
+          </button>
+
+          <div style="background:linear-gradient(135deg, rgba(20,184,166,0.06), rgba(15,118,110,0.1));border:1px dashed var(--primary);border-radius:14px;padding:14px;font-size:0.82rem;margin-top:auto">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+              <span style="font-size:1.1rem">⚙️</span>
+              <strong style="color:var(--primary)">Gemini API Connector</strong>
+            </div>
+            <p class="muted" style="margin:0 0 10px;font-size:0.78rem;line-height:1.4">
+              Connect your own Google Gemini Flash API key for unconstrained live web intelligence.
+            </p>
+            <button class="btn btn-sm" onclick="openAiSettingsModal()" style="width:100%">
+              Configure Gemini API Key
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>🦷 DentaCare</h3>
+        <p>Smart dental clinic management system with connected patient-treatment workflows.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <p>
+          <a href="services.html">Services Offered</a><br>
+          <a href="appointment.html">Book Appointment</a><br>
+          <a href="history.html">Patient Portal</a><br>
+          <a href="about.html">Our Specialists</a>
+        </p>
+      </div>
+      <div>
+        <h3>Emergency & Contact</h3>
+        <p>+91 98765 43210<br>emergency@dentacare.demo<br>24/7 Clinical Emergency On-Call</p>
+      </div>
+    </div>
+    <div class="container" style="margin-top:28px;border-top:1px solid #28585e;padding-top:18px">
+      © <span data-year></span> DentaCare. Academic project prototype.
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Workspace-specific script bindings
+    document.addEventListener("DOMContentLoaded", () => {
+      initWorkspacePage();
+    });
+
+    function setWorkspaceTab(mode) {
+      const docBtn = document.getElementById("workspaceTabDoctor");
+      const patBtn = document.getElementById("workspaceTabPatient");
+      const docWrap = document.getElementById("workspaceDoctorPrompts");
+      const patWrap = document.getElementById("workspacePatientPrompts");
+
+      if (mode === "doctor") {
+        docBtn.classList.add("active");
+        patBtn.classList.remove("active");
+        docWrap.style.display = "flex";
+        patWrap.style.display = "none";
+        switchFullAiMode("doctor");
+      } else {
+        patBtn.classList.add("active");
+        docBtn.classList.remove("active");
+        patWrap.style.display = "flex";
+        docWrap.style.display = "none";
+        switchFullAiMode("patient");
+      }
+    }
+
+    function executeWorkspacePrompt(text) {
+      const input = document.getElementById("fullChatInput");
+      if (input) {
+        input.value = text;
+        handleFullChatSubmit(new Event("submit"));
+      }
+    }
+
+    function updateWorkspacePatientContext() {
+      const select = document.getElementById("workspacePatientSelect");
+      if (!select) return;
+      const pId = select.value;
+      const patients = getData("patients");
+      const p = patients.find(x => x.id === pId);
+      if (!p) return;
+
+      document.getElementById("wspName").textContent = p.name;
+      document.getElementById("wspId").textContent = p.id;
+      document.getElementById("wspAge").textContent = p.age;
+      document.getElementById("wspHistory").textContent = p.history || "No notes.";
+      document.getElementById("fullContextBadge").textContent = `Active Patient: ${p.name} (${p.id})`;
+    }
+
+    function summarizeCurrentPatient() {
+      const select = document.getElementById("workspacePatientSelect");
+      const pId = select ? select.value : "DC1024";
+      const patients = getData("patients");
+      const p = patients.find(x => x.id === pId) || { name: "Rahul Sharma", id: "DC1024" };
+      executeWorkspacePrompt(`Summarize clinical history, odontogram status, and active treatment plan for ${p.name} (${p.id}).`);
+    }
+  </script>
+</body>
+</html>
